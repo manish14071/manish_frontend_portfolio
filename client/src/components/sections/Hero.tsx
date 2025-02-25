@@ -1,6 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Twitter, Mail } from "lucide-react";
+
+const socialLinks = [
+  { name: "GitHub", icon: Github, url: "https://github.com" },
+  { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com" },
+  { name: "Twitter", icon: Twitter, url: "https://twitter.com" },
+  { name: "Email", icon: Mail, url: "mailto:your.email@example.com" }
+];
 
 export default function Hero() {
   return (
@@ -9,34 +16,28 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background -z-10" />
       <div className="absolute inset-0 bg-grid-white/[0.02] -z-10" />
 
-      {/* Animated background shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.2, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 rounded-full bg-primary/10 blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.3, 0.2],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-          className="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 rounded-full bg-primary/10 blur-3xl"
-        />
-      </div>
+      {/* Social links */}
+      <motion.div 
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.8 }}
+        className="fixed left-6 bottom-1/2 translate-y-1/2 hidden lg:flex flex-col gap-4"
+      >
+        {socialLinks.map((social) => (
+          <motion.a
+            key={social.name}
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+            whileHover={{ scale: 1.1, x: 5 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <social.icon className="h-5 w-5" />
+            <span className="sr-only">{social.name}</span>
+          </motion.a>
+        ))}
+      </motion.div>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <motion.div
@@ -62,11 +63,12 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
           >
+            Hi, I'm{" "}
             <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              Frontend Developer
+              Manish Dehraj
             </span>
             <br />
-            <span className="text-foreground">& UI Designer</span>
+            <span className="text-foreground">Frontend Developer</span>
           </motion.h1>
 
           <motion.p 
@@ -91,6 +93,29 @@ export default function Hero() {
             <Button size="lg" variant="outline" className="min-w-[160px]" asChild>
               <a href="#contact">Contact Me</a>
             </Button>
+          </motion.div>
+
+          {/* Mobile social links */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="mt-8 flex gap-4 lg:hidden"
+          >
+            {socialLinks.map((social) => (
+              <motion.a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <social.icon className="h-5 w-5" />
+                <span className="sr-only">{social.name}</span>
+              </motion.a>
+            ))}
           </motion.div>
         </motion.div>
 

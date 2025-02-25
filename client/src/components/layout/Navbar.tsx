@@ -5,6 +5,32 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
+const Logo = () => (
+  <motion.div
+    initial={{ scale: 0.9 }}
+    animate={{ scale: 1 }}
+    className="font-bold text-xl flex items-center gap-2"
+  >
+    <div className="relative h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center overflow-hidden">
+      <span className="text-primary text-xl font-black">MD</span>
+      <motion.div
+        className="absolute inset-0 border border-primary/20"
+        animate={{
+          rotate: [0, 360],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
+    </div>
+    <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+      Manish Dehraj
+    </span>
+  </motion.div>
+);
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -17,7 +43,7 @@ export default function Navbar() {
     >
       <nav className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <span className="font-bold text-xl">Portfolio</span>
+          <Logo />
         </Link>
 
         {/* Mobile menu button */}

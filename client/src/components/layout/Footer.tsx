@@ -53,7 +53,7 @@ export default function Footer() {
           </div>
           <div className="text-right">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Your Name. All rights reserved.
+              © {new Date().getFullYear()} Manish Dehraj. All rights reserved.
             </p>
             <p className="mt-2 text-sm text-muted-foreground">
               Made with ❤️ using React & Tailwind
