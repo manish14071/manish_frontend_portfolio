@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background -z-10" />
       <div className="absolute inset-0 bg-grid-white/[0.02] -z-10" />
 
-      {/* Animated circles */}
+      {/* Animated background shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
         <motion.div
           animate={{
@@ -94,45 +94,88 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* SVG Illustration */}
+        {/* Interactive SVG Illustration */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="hidden lg:block"
+          className="hidden lg:block relative"
         >
           <svg
             viewBox="0 0 500 500"
             className="w-full h-full"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <motion.circle
-              cx="250"
-              cy="250"
-              r="100"
-              className="fill-primary/20"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 1, delay: 0.5 }}
-            />
-            <motion.path
-              d="M 150 250 L 350 250"
-              className="stroke-primary"
-              strokeWidth="4"
+            {/* Code window */}
+            <motion.rect
+              x="100"
+              y="100"
+              width="300"
+              height="200"
+              rx="10"
+              className="fill-background stroke-primary"
+              strokeWidth="2"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
-              transition={{ duration: 1, delay: 1 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+            />
+
+            {/* Window controls */}
+            <motion.g
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5 }}
+            >
+              <circle cx="125" cy="125" r="5" className="fill-red-500" />
+              <circle cx="145" cy="125" r="5" className="fill-yellow-500" />
+              <circle cx="165" cy="125" r="5" className="fill-green-500" />
+            </motion.g>
+
+            {/* Code lines */}
+            <motion.g
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 2 }}
+              className="stroke-primary"
+              strokeWidth="2"
+            >
+              <line x1="120" y1="160" x2="280" y2="160" />
+              <line x1="120" y1="180" x2="250" y2="180" />
+              <line x1="120" y1="200" x2="300" y2="200" />
+              <line x1="120" y1="220" x2="260" y2="220" />
+            </motion.g>
+
+            {/* Floating elements */}
+            <motion.circle
+              cx="400"
+              cy="150"
+              r="20"
+              className="fill-primary/20"
+              animate={{
+                y: [-10, 10, -10],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
             />
             <motion.rect
-              x="200"
-              y="200"
-              width="100"
-              height="100"
-              className="fill-none stroke-primary"
-              strokeWidth="4"
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ duration: 1, delay: 1.5 }}
+              x="350"
+              y="250"
+              width="40"
+              height="40"
+              className="fill-primary/20"
+              animate={{
+                rotate: [0, 180, 360],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
             />
           </svg>
         </motion.div>
