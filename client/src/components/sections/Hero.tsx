@@ -64,7 +64,7 @@ export default function Hero() {
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
           >
             Hi, I'm{" "}
-            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent inline-block">
               Manish Dehraj
             </span>
             <br />
@@ -138,7 +138,7 @@ export default function Hero() {
               width="300"
               height="200"
               rx="10"
-              className="fill-background stroke-primary"
+              className="fill-card stroke-primary/50"
               strokeWidth="2"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
@@ -161,7 +161,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 2 }}
-              className="stroke-primary"
+              className="stroke-primary/50"
               strokeWidth="2"
             >
               <line x1="120" y1="160" x2="280" y2="160" />

@@ -11,10 +11,11 @@ const Logo = () => (
     animate={{ scale: 1 }}
     className="font-bold text-xl flex items-center gap-2"
   >
-    <div className="relative h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center overflow-hidden">
-      <span className="text-primary text-xl font-black">MD</span>
+    <div className="relative h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center overflow-hidden group">
+      <span className="text-primary text-xl font-black relative z-10">MD</span>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent"></div>
       <motion.div
-        className="absolute inset-0 border border-primary/20"
+        className="absolute inset-0 border border-primary/40"
         animate={{
           rotate: [0, 360],
         }}
@@ -25,7 +26,7 @@ const Logo = () => (
         }}
       />
     </div>
-    <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+    <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent font-extrabold">
       Manish Dehraj
     </span>
   </motion.div>
