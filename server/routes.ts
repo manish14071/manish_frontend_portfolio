@@ -14,6 +14,15 @@ export async function registerRoutes(app: Express) {
     }
   });
 
+  app.get("/api/blog", async (req, res) => {
+    try {
+      const posts = await storage.getBlogPosts();
+      res.json(posts);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch blog posts" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

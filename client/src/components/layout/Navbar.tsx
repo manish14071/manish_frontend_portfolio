@@ -34,6 +34,13 @@ const Logo = () => (
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const navItems = [
+    { href: "#projects", label: "Projects" },
+    { href: "#skills", label: "Skills" },
+    { href: "/blog", label: "Blog" },
+    { href: "#contact", label: "Contact" },
+  ];
+
   return (
     <motion.header
       initial={{ y: -20, opacity: 0 }}
@@ -56,9 +63,15 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
-          <a href="#projects" className="text-muted-foreground hover:text-foreground transition-colors">Projects</a>
-          <a href="#skills" className="text-muted-foreground hover:text-foreground transition-colors">Skills</a>
-          <a href="#contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+          {navItems.map(item => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {item.label}
+            </Link>
+          ))}
           <Button variant="outline" asChild>
             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
               Resume
@@ -75,27 +88,16 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-16 left-0 right-0 bg-background border-b py-4 px-4 md:hidden flex flex-col gap-4"
           >
-            <a 
-              href="#projects" 
-              className="text-muted-foreground hover:text-foreground py-2"
-              onClick={() => setIsOpen(false)}
-            >
-              Projects
-            </a>
-            <a 
-              href="#skills" 
-              className="text-muted-foreground hover:text-foreground py-2"
-              onClick={() => setIsOpen(false)}
-            >
-              Skills
-            </a>
-            <a 
-              href="#contact" 
-              className="text-muted-foreground hover:text-foreground py-2"
-              onClick={() => setIsOpen(false)}
-            >
-              Contact
-            </a>
+            {navItems.map(item => (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="text-muted-foreground hover:text-foreground py-2"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
             <Button variant="outline" className="w-full" asChild>
               <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                 Resume
