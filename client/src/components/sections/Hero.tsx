@@ -29,9 +29,9 @@ export default function Hero() {
 
   return (
     <section className="min-h-[90vh] flex items-center justify-center px-4 md:px-6 py-12 relative overflow-hidden">
-      {/* Background gradient and patterns */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-background -z-10" />
+      {/* Background patterns */}
       <div className="absolute inset-0 bg-grid-white/[0.02] -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background -z-10" />
 
       {/* Social links */}
       <motion.div 
@@ -46,11 +46,11 @@ export default function Hero() {
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-foreground transition-colors"
+            className="text-muted-foreground hover:text-primary transition-colors"
             whileHover={{ 
               scale: 1.1, 
               x: 5,
-              color: "hsl(var(--primary))"
+              color: "var(--primary)" 
             }}
             whileTap={{ scale: 0.95 }}
           >
@@ -73,7 +73,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mb-6 inline-block"
           >
-            <span className="px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium dark:text-white">
+            <span className="px-4 py-2 rounded-full bg-primary/10 text-foreground text-sm font-medium">
               {greeting}, I'm available for freelance work
             </span>
           </motion.div>
@@ -85,18 +85,18 @@ export default function Hero() {
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
           >
             Hi, I'm{" "}
-            <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent inline-block dark:from-white dark:via-primary dark:to-primary/60">
+            <span className="text-primary">
               Manish Dehraj
             </span>
             <br />
-            <span className="text-foreground dark:text-white">Frontend Developer</span>
+            <span className="text-foreground">Frontend Developer</span>
           </motion.h1>
 
           <motion.p 
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl dark:text-gray-300"
+            className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl"
           >
             Crafting beautiful, responsive, and user-friendly web applications with modern technologies.
             Specializing in React, Next.js, and cloud solutions.
@@ -149,7 +149,7 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Interactive SVG Illustration */}
+        {/* Code window illustration */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -161,14 +161,21 @@ export default function Hero() {
             className="w-full h-full"
             xmlns="http://www.w3.org/2000/svg"
           >
-            {/* Code window */}
+            <defs>
+              <linearGradient id="windowGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="var(--primary)" stopOpacity="0.1" />
+                <stop offset="100%" stopColor="var(--background)" stopOpacity="0.05" />
+              </linearGradient>
+            </defs>
+
+            {/* Window background */}
             <motion.rect
               x="100"
               y="100"
               width="300"
               height="200"
               rx="10"
-              className="fill-card stroke-primary/50 dark:stroke-white/30"
+              className="fill-card stroke-border"
               strokeWidth="2"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
@@ -191,7 +198,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 2 }}
-              className="stroke-primary/50 dark:stroke-white/30"
+              className="stroke-muted-foreground"
               strokeWidth="2"
             >
               <line x1="120" y1="160" x2="280" y2="160" />
@@ -199,39 +206,6 @@ export default function Hero() {
               <line x1="120" y1="200" x2="300" y2="200" />
               <line x1="120" y1="220" x2="260" y2="220" />
             </motion.g>
-
-            {/* Floating elements */}
-            <motion.circle
-              cx="400"
-              cy="150"
-              r="20"
-              className="fill-primary/20 dark:fill-white/20"
-              animate={{
-                y: [-10, 10, -10],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-            <motion.rect
-              x="350"
-              y="250"
-              width="40"
-              height="40"
-              className="fill-primary/20 dark:fill-white/20"
-              animate={{
-                rotate: [0, 180, 360],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
           </svg>
         </motion.div>
       </div>
@@ -247,7 +221,7 @@ export default function Hero() {
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
         >
-          <ArrowDown className="w-6 h-6 text-muted-foreground dark:text-white/70" />
+          <ArrowDown className="w-6 h-6 text-muted-foreground" />
         </motion.div>
       </motion.div>
     </section>
