@@ -52,6 +52,7 @@ const item = {
 
 export default function Projects() {
   const [filter, setFilter] = useState<string | null>(null);
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
 
   const allTags = Array.from(new Set(projects.flatMap(p => p.tags)));
   const filteredProjects = filter 
@@ -99,36 +100,53 @@ export default function Projects() {
               key={project.id}
               variants={item}
               className="h-full"
+              onHoverStart={() => setHoveredId(project.id)}
+              onHoverEnd={() => setHoveredId(null)}
             >
-              <Card className="h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <CardHeader>
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="rounded-lg mb-4 w-full h-48 object-cover"
-                  />
-                  <CardTitle className="text-xl">{project.title}</CardTitle>
+              <Card className="h-full overflow-hidden group">
+                <CardHeader className="p-0">
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                  <div className="p-6">
+                    <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
+                    <p className="text-muted-foreground">
+                      {project.description}
+                    </p>
+                  </div>
                 </CardHeader>
-                <CardContent className="flex flex-col h-full">
-                  <p className="text-muted-foreground mb-4 flex-grow">
-                    {project.description}
-                  </p>
+                <CardContent className="p-6 pt-0">
                   <div className="space-y-4">
                     <div className="flex gap-2 flex-wrap">
                       {project.tags.map(tag => (
                         <Badge key={tag} variant="secondary">{tag}</Badge>
                       ))}
                     </div>
-                    <div className="flex gap-2">
-                      <Button variant="outline" size="sm" className="flex-1" asChild>
-                        <a href={project.github} target="_blank" rel="noopener noreferrer">
-                          <Github className="w-4 h-4 mr-2" />
+                    <div className="grid grid-cols-2 gap-3">
+                      <Button variant="outline" size="sm" className="w-full group/btn" asChild>
+                        <a 
+                          href={project.github} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center"
+                        >
+                          <Github className="w-4 h-4 mr-2 transition-transform group-hover/btn:scale-110" />
                           Code
                         </a>
                       </Button>
-                      <Button variant="outline" size="sm" className="flex-1" asChild>
-                        <a href={project.link} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="w-4 h-4 mr-2" />
+                      <Button variant="default" size="sm" className="w-full group/btn" asChild>
+                        <a 
+                          href={project.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center"
+                        >
+                          <ExternalLink className="w-4 h-4 mr-2 transition-transform group-hover/btn:scale-110" />
                           Demo
                         </a>
                       </Button>
