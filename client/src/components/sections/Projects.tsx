@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -102,29 +102,49 @@ export default function Projects() {
               className="h-full"
               onHoverStart={() => setHoveredId(project.id)}
               onHoverEnd={() => setHoveredId(null)}
+              whileHover={{ 
+                scale: 1.02,
+                transition: { duration: 0.2 }
+              }}
             >
-              <Card className="h-full overflow-hidden group">
+              <Card className="h-full overflow-hidden group relative">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+
                 <CardHeader className="p-0">
                   <div className="relative overflow-hidden">
-                    <img 
+                    <motion.img 
                       src={project.image} 
-                      alt={project.title} 
-                      className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                      alt={project.title}
+                      className="w-full h-48 object-cover"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.3 }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                   <div className="p-6">
-                    <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
+                    <motion.h3 
+                      className="text-xl font-semibold mb-2"
+                      whileHover={{ x: 5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {project.title}
+                    </motion.h3>
                     <p className="text-muted-foreground">
                       {project.description}
                     </p>
                   </div>
                 </CardHeader>
+
                 <CardContent className="p-6 pt-0">
                   <div className="space-y-4">
                     <div className="flex gap-2 flex-wrap">
                       {project.tags.map(tag => (
-                        <Badge key={tag} variant="secondary">{tag}</Badge>
+                        <Badge 
+                          key={tag} 
+                          variant="secondary"
+                          className="transition-transform hover:scale-105"
+                        >
+                          {tag}
+                        </Badge>
                       ))}
                     </div>
                     <div className="grid grid-cols-2 gap-3">

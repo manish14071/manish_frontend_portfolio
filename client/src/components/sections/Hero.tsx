@@ -46,16 +46,18 @@ export default function Hero() {
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-primary transition-colors"
+            className="text-muted-foreground hover:text-primary transition-colors relative group"
             whileHover={{ 
               scale: 1.1, 
-              x: 5,
-              color: "var(--primary)" 
+              x: 5
             }}
             whileTap={{ scale: 0.95 }}
           >
             <social.icon className="h-5 w-5" />
             <span className="sr-only">{social.name}</span>
+            <span className="absolute left-8 px-2 py-1 bg-popover text-popover-foreground text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity">
+              {social.name}
+            </span>
           </motion.a>
         ))}
       </motion.div>
@@ -73,7 +75,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mb-6 inline-block"
           >
-            <span className="px-4 py-2 rounded-full bg-primary/10 text-foreground text-sm font-medium">
+            <span className="px-4 py-2 rounded-full bg-primary/10 text-foreground dark:text-white text-sm font-medium">
               {greeting}, I'm available for freelance work
             </span>
           </motion.div>
@@ -85,18 +87,18 @@ export default function Hero() {
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
           >
             Hi, I'm{" "}
-            <span className="text-primary">
+            <span className="text-primary dark:text-white">
               Manish Dehraj
             </span>
             <br />
-            <span className="text-foreground">Frontend Developer</span>
+            <span className="text-foreground dark:text-white">Frontend Developer</span>
           </motion.h1>
 
           <motion.p 
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl"
+            className="text-lg md:text-xl text-foreground dark:text-gray-300 mb-8 max-w-2xl"
           >
             Crafting beautiful, responsive, and user-friendly web applications with modern technologies.
             Specializing in React, Next.js, and cloud solutions.
@@ -110,7 +112,7 @@ export default function Hero() {
           >
             <Button 
               size="lg" 
-              className="min-w-[160px] bg-primary text-primary-foreground hover:bg-primary/90" 
+              className="min-w-[160px] bg-primary text-primary-foreground hover:bg-primary/90 dark:bg-white dark:text-black dark:hover:bg-white/90" 
               asChild
             >
               <a href="#projects">View Projects</a>
@@ -175,7 +177,7 @@ export default function Hero() {
               width="300"
               height="200"
               rx="10"
-              className="fill-card stroke-border"
+              className="fill-card stroke-border dark:stroke-white/20"
               strokeWidth="2"
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
@@ -198,7 +200,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 2 }}
-              className="stroke-muted-foreground"
+              className="stroke-muted-foreground dark:stroke-white/50"
               strokeWidth="2"
             >
               <line x1="120" y1="160" x2="280" y2="160" />
@@ -221,7 +223,7 @@ export default function Hero() {
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
         >
-          <ArrowDown className="w-6 h-6 text-muted-foreground" />
+          <ArrowDown className="w-6 h-6 text-muted-foreground dark:text-white/70" />
         </motion.div>
       </motion.div>
     </section>

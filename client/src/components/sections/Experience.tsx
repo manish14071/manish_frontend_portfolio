@@ -62,53 +62,61 @@ export default function Experience() {
           </p>
         </motion.div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="space-y-6"
-        >
-          {experiences.map((exp) => (
-            <motion.div
-              key={exp.id}
-              variants={item}
-              className="relative"
-            >
-              <Card className="group hover:shadow-lg transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                    <div>
-                      <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
-                        {exp.role}
-                      </h3>
-                      <div className="flex items-center gap-2 text-muted-foreground mt-1">
-                        <Briefcase className="w-4 h-4" />
-                        <span>{exp.company}</span>
+        <div className="relative">
+          {/* Timeline line */}
+          <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-primary/20" />
+
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={exp.id}
+                variants={item}
+                className="relative"
+              >
+                {/* Timeline dot */}
+                <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-primary" />
+
+                <div className={`relative pl-16 md:pl-0 ${index % 2 === 0 ? 'md:pr-32 md:text-right' : 'md:pl-32'}`}>
+                  <Card className="group hover:shadow-lg transition-all duration-300">
+                    <CardContent className="p-6">
+                      <div className="flex flex-col gap-2">
+                        <motion.h3 
+                          className="text-xl font-semibold text-primary"
+                          whileHover={{ x: index % 2 === 0 ? -5 : 5 }}
+                        >
+                          {exp.role}
+                        </motion.h3>
+                        <div className="flex items-center gap-2 text-muted-foreground text-sm mb-2">
+                          <Briefcase className="w-4 h-4" />
+                          <span>{exp.company}</span>
+                          <span>•</span>
+                          <Calendar className="w-4 h-4" />
+                          <span>{exp.duration}</span>
+                        </div>
+                        <p className="text-muted-foreground">
+                          {exp.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          {exp.technologies.map((tech) => (
+                            <Badge key={tech} variant="secondary">
+                              {tech}
+                            </Badge>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                    <div className="flex items-center gap-2 text-muted-foreground mt-2 md:mt-0">
-                      <Calendar className="w-4 h-4" />
-                      <span>{exp.duration}</span>
-                    </div>
-                  </div>
-                  
-                  <p className="text-muted-foreground mb-4">
-                    {exp.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech) => (
-                      <Badge key={tech} variant="secondary">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
