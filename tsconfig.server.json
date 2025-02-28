@@ -3,7 +3,7 @@
     "compilerOptions": {
       "noEmit": false,
       "outDir": "dist/server",
-      "rootDir": "server",
+      "rootDir": ".",
       "module": "NodeNext",
       "moduleResolution": "NodeNext",
       "types": ["node"],

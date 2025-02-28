@@ -1,4 +1,4 @@
-import {  type Message, type InsertMessage } from "@shared/schema";
+import {  type Message, type InsertMessage } from "../shared/schema.js";
 
 // modify the interface with any CRUD methods
 // you might need
