@@ -12,7 +12,8 @@
     "setup-db": "createdb frontier_portfolio",
     "generate": "drizzle-kit generate:pg",
     "migrate": "drizzle-kit push:pg",
-    "studio": "drizzle-kit studio"
+    "studio": "drizzle-kit studio",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: portfolio
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+    disk:
+      name: uploads
+      mountPath: /uploads
+      sizeGB: 1
