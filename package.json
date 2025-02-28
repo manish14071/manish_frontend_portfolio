@@ -4,12 +4,11 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
+    "build": "npm run build:client && npm run build:server",
+"build:client": "vite build",
+   "build:server": "tsc --project tsconfig.server.json",
     "dev": "tsx server/index.ts",
-    "build": "tsc --project tsconfig.server.json",
   "start": "node dist/server/index.js",
-    "build:client": "vite build",
-    "build:server": "tsc -p tsconfig.server.json",
-
     "preview": "vite preview",
     "check": "tsc",
     "db:push": "drizzle-kit push",
