@@ -8,31 +8,32 @@ import { Github, ExternalLink } from "lucide-react";
 const projects = [
   {
     id: 1,
-    title: "E-commerce Platform",
+    title: " Meo-Loja E-commerce Platform",
     description: "A full-stack e-commerce solution with cart functionality, payment processing, and order management using React, Node.js, and AWS.",
     tags: ["React", "Node.js", "AWS", "Stripe"],
     image: "https://placehold.co/600x400",
-    link: "https://example.com",
+    link: "https://peppy-rolypoly-0bcae4.netlify.app/",
     github: "https://github.com"
   },
   {
     id: 2,
-    title: "Task Management App",
+    title: "Casa da Saude",
     description: "Real-time task management application with team collaboration features built using Next.js and WebSocket technology.",
     tags: ["Next.js", "TypeScript", "WebSocket", "PostgreSQL"],
-    image: "https://placehold.co/600x400",
-    link: "https://example.com",
+    image: "../sections/casa-da-saude.png",
+    link: "https://casa-da-saude.netlify.app/",
     github: "https://github.com"
   },
   {
     id: 3,
-    title: "AI Content Generator",
-    description: "Content generation platform using OpenAI's GPT-3 API with a modern React frontend and serverless backend.",
-    tags: ["React", "AWS Lambda", "OpenAI", "Tailwind"],
+    title: "Chat App",
+    description: "A real-time chat application with user authentication and online status indicators using React and Firebase.",
+    tags: ["React", "Firebase", "Chakra UI"],
     image: "https://placehold.co/600x400",
-    link: "https://example.com",
+    link: "https://freechat-o1cb.onrender.com/",
     github: "https://github.com"
-  }
+  },
+   
 ];
 
 const container = {
@@ -148,7 +149,12 @@ export default function Projects() {
                       ))}
                     </div>
                     <div className="grid grid-cols-2 gap-3">
-                      <Button variant="outline" size="sm" className="w-full group/btn" asChild>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="w-full group/btn"
+                        asChild
+                      >
                         <a 
                           href={project.github} 
                           target="_blank" 
@@ -159,12 +165,20 @@ export default function Projects() {
                           Code
                         </a>
                       </Button>
-                      <Button variant="default" size="sm" className="w-full group/btn" asChild>
+                      <Button 
+                        variant="default" 
+                        size="sm" 
+                        className="w-full group/btn"
+                        asChild
+                      >
                         <a 
                           href={project.link} 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="flex items-center justify-center"
+                          onClick={(e) => {
+                            console.log('Demo link:', project.link);
+                          }}
                         >
                           <ExternalLink className="w-4 h-4 mr-2 transition-transform group-hover/btn:scale-110" />
                           Demo

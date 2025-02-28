@@ -4,10 +4,10 @@ import { ArrowDown, Github, Linkedin, Twitter, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const socialLinks = [
-  { name: "GitHub", icon: Github, url: "https://github.com" },
-  { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com" },
-  { name: "Twitter", icon: Twitter, url: "https://twitter.com" },
-  { name: "Email", icon: Mail, url: "mailto:your.email@example.com" }
+  { name: "GitHub", icon: Github, url: "https://github.com/manish14071" },
+  { name: "LinkedIn", icon: Linkedin, url: "https://www.linkedin.com/in/manish-dehraj/" },
+  { name: "Twitter", icon: Twitter, url: "https://x.com/manish2012dehr1" },
+  { name: "Email", icon: Mail, url: "manish2012dehraj@gmail.com" }
 ];
 
 function getGreeting() {
