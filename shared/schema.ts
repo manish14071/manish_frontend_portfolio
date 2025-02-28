@@ -2,35 +2,21 @@ import { pgTable, text, serial, jsonb } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-export const messages = pgTable("messages", {
-  id: serial("id").primaryKey(),
-  name: text("name").notNull(),
-  email: text("email").notNull(),
-  message: text("message").notNull(),
+
+
+
+
+export const messageSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  email: z.string().email(),
+  message: z.string(),
+  createdAt: z.date()
 });
 
-export const projects = pgTable("projects", {
-  id: serial("id").primaryKey(),
-  title: text("title").notNull(),
-  description: text("description").notNull(),
-  tags: text("tags").array().notNull(),
-  link: text("link"),
-  image: text("image").notNull(),
-});
+export const insertMessageSchema = messageSchema.omit({ id: true, createdAt: true });
 
-export const users = pgTable("users", {
-  id: serial("id").primaryKey(),
-  username: text("username").notNull().unique(),
-  email: text("email").notNull(),
-  password: text("password").notNull(),
-});
-
-export const insertMessageSchema = createInsertSchema(messages);
+export type Message = z.infer<typeof messageSchema>;
 export type InsertMessage = z.infer<typeof insertMessageSchema>;
-export type Message = typeof messages.$inferSelect;
 
-export const insertUserSchema = createInsertSchema(users);
-export type InsertUser = z.infer<typeof insertUserSchema>;
-export type User = typeof users.$inferSelect;
 
-export type Project = typeof projects.$inferSelect;
