@@ -1,6 +1,7 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import path from "path";
 
 import * as dotenv from 'dotenv';
 
@@ -8,6 +9,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -41,6 +43,9 @@ app.use((req, res, next) => {
   next();
 });
 
+// Health check endpoint
+
+
 (async () => {
   try {
     // Check database connection before starting server
@@ -65,8 +70,7 @@ app.use((req, res, next) => {
       serveStatic(app);
     }
 
-    const PORT = Number(process.env.PORT) || 5001;
-    server.listen(PORT, "0.0.0.0", () => {
+    server.listen(PORT,  () => {
       log(`✅ Server running on port ${PORT}`);
     });
   } catch (error) {
