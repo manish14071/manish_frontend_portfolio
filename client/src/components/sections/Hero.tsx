@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button.jsx"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ArrowDown, Github, Linkedin, Twitter, Mail, ArrowRight } from "lucide-react"
 import { useEffect, useState, useRef } from "react"

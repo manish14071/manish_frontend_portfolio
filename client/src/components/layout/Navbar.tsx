@@ -1,7 +1,7 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import ThemeToggle from "./ThemeToggle"
+import { Button } from "@/components/ui/button.jsx"
+import ThemeToggle from "./ThemeToggle.jsx"
 import { Link } from "wouter"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, ChevronDown } from "lucide-react"
@@ -141,7 +141,7 @@ export default function Navbar() {
 
           <div className="ml-2">
             <Button variant="outline" size="sm" className="border-primary/20 hover:bg-primary/10 group" asChild>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center">
+              <a href="/Manish-Resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center">
                 Resume
                 <ChevronDown className="ml-1 h-4 w-4 transition-transform group-hover:rotate-180" />
               </a>
@@ -184,7 +184,7 @@ export default function Navbar() {
                 transition={{ delay: navItems.length * 0.1 }}
               >
                 <Button variant="outline" className="w-full mt-2" asChild>
-                  <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                  <a href="/Manish-Resume.pdf" target="_blank" rel="noopener noreferrer">
                     Resume
                   </a>
                 </Button>

@@ -1,6 +1,6 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card.jsx"
 import { motion } from "framer-motion"
 import {
   SiReact,
@@ -15,6 +15,12 @@ import {
   SiGit,
   SiDocker,
   SiPostgresql,
+  SiMongodb,SiExpress,
+  SiJest,
+  SiVite,
+  SiFirebase,
+  SiRedux,
+  SiR
 } from "react-icons/si"
 import { useState } from "react"
 
@@ -91,6 +97,52 @@ const skills = [
     color: "text-[#336791]",
     description: "Relational database management system",
   },
+
+  {
+    icon: SiMongodb,
+    name: "MongoDB",
+    color: "text-[#47A248]",
+    description: "Document-oriented NoSQL database",
+    
+  },
+  {
+    icon: SiExpress,
+    name: "Express",
+    color: "text-[#000000]",
+    description: "Fast, unopinionated, minimalist web framework for Node.js",
+    
+  },
+  {
+    icon: SiJest,
+    name: "Jest",
+    color: "text-[#C21325]",
+    description: "Delightful JavaScript Testing",
+    
+  },
+
+  {
+    icon: SiVite,
+    name: "Vite",
+    color: "text-[#646CFF]",
+    description: "Next Generation Frontend Tooling",
+   
+  },
+  {
+    icon: SiFirebase,
+    name: "Firebase",
+    color: "text-[#FFCA28]",
+    description: "Build apps fast, without managing infrastructure",
+    
+  },
+  {
+    icon: SiRedux,
+    name: "Redux",
+    color: "text-[#764ABC]",
+    description: "A Predictable State Container for JS Apps",
+    
+  },
+
+
 ]
 
 const container = {

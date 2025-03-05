@@ -1,10 +1,11 @@
 "use client"
 
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Card, CardContent } from "../ui/card.jsx"
+
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Briefcase, Calendar, ChevronRight } from "lucide-react"
 import { useRef, useState } from "react"
+import { Badge } from "../ui/badge.jsx"
 
 const experiences = [
   {

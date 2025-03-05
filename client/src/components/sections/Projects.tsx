@@ -1,11 +1,12 @@
-"use client"
+"use client";
 
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { motion, AnimatePresence } from "framer-motion"
-import { useState } from "react"
-import { Github, ExternalLink, ArrowRight } from "lucide-react"
+import { Card, CardContent, CardHeader } from "@/components/ui/card.jsx";
+import { Badge } from "@/components/ui/badge.jsx";
+import { Button } from "@/components/ui/button.jsx";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { Github, ExternalLink, ArrowRight } from "lucide-react";
+import images from "@/assets/images.js";
 
 const projects = [
   {
@@ -14,9 +15,9 @@ const projects = [
     description:
       "A full-stack e-commerce solution with cart functionality, payment processing, and order management using React, Node.js, and AWS.",
     tags: ["React", "Node.js", "AWS", "Stripe"],
-    image: "https://placehold.co/600x400",
+    image: images.meo,
     link: "https://peppy-rolypoly-0bcae4.netlify.app/",
-    github: "https://github.com",
+    github: "https://github.com/manish14071",
   },
   {
     id: 2,
@@ -24,9 +25,9 @@ const projects = [
     description:
       "Real-time task management application with team collaboration features built using Next.js and WebSocket technology.",
     tags: ["Next.js", "TypeScript", "WebSocket", "PostgreSQL"],
-    image: "../sections/casa-da-saude.png",
+    image: images.casa,
     link: "https://casa-da-saude.netlify.app/",
-    github: "https://github.com",
+    github: "https://github.com/manish14071",
   },
   {
     id: 3,
@@ -34,11 +35,33 @@ const projects = [
     description:
       "A real-time chat application with user authentication and online status indicators using React and Firebase.",
     tags: ["React", "Firebase", "Chakra UI"],
-    image: "https://placehold.co/600x400",
+    image: images.chatApp,
     link: "https://freechat-o1cb.onrender.com/",
-    github: "https://github.com",
+    github: "https://github.com/manish14071",
   },
-]
+  {
+    id: 4,
+    title: "Music Academy",
+    description:
+      "nteractive UI: Aesthetic and responsive design with Tailwind CSS.• Smooth Animations: Engaging user experience with Framer Motion",
+
+    tags: ["React", "Tailwind", "Acertinity Ui"],
+    image: images.music,
+    link: "https://musicacadmy.vercel.app/",
+    github: "https://github.com/manish14071",
+  },
+  {
+    id: 4,
+    title: "GLobal Borders Travel",
+    description:
+      "Modern UI: Built with MUI and Tailwind for a sleek, responsive design.Animations & Effects: Uses Framer Motion for smooth interactions. Carousel Integration: React Slick for showcasing destinations dynamically.SEO & Performance: Optimized with Next.js for fast loading.",
+
+    tags: ["React", "Nextjs", "Tailwind Css", "Mui"],
+    image: images.gbt,
+    link: "https://globalborderstravels.netlify.app/",
+    github: "https://github.com/manish14071",
+  },
+];
 
 const container = {
   hidden: { opacity: 0 },
@@ -48,20 +71,22 @@ const container = {
       staggerChildren: 0.2,
     },
   },
-}
+};
 
 const item = {
   hidden: { y: 20, opacity: 0 },
   show: { y: 0, opacity: 1 },
-}
+};
 
 export default function Projects() {
-  const [filter, setFilter] = useState<string | null>(null)
-  const [hoveredId, setHoveredId] = useState<number | null>(null)
-  const [expandedId, setExpandedId] = useState<number | null>(null)
+  const [filter, setFilter] = useState<string | null>(null);
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [expandedId, setExpandedId] = useState<number | null>(null);
 
-  const allTags = Array.from(new Set(projects.flatMap((p) => p.tags)))
-  const filteredProjects = filter ? projects.filter((p) => p.tags.includes(filter)) : projects
+  const allTags = Array.from(new Set(projects.flatMap((p) => p.tags)));
+  const filteredProjects = filter
+    ? projects.filter((p) => p.tags.includes(filter))
+    : projects;
 
   return (
     <section
@@ -92,7 +117,12 @@ export default function Projects() {
               viewport={{ once: true }}
             >
               {allTags.map((tag) => (
-                <motion.div key={tag} variants={item} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <motion.div
+                  key={tag}
+                  variants={item}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   <Badge
                     variant={filter === tag ? "default" : "outline"}
                     className={`cursor-pointer text-sm py-1.5 px-3 rounded-full transition-all duration-300 ${
@@ -161,10 +191,16 @@ export default function Projects() {
                         size="icon"
                         variant="secondary"
                         className="rounded-full shadow-lg bg-background/80 backdrop-blur-md hover:bg-primary hover:text-primary-foreground"
-                        onClick={() => setExpandedId(expandedId === project.id ? null : project.id)}
+                        onClick={() =>
+                          setExpandedId(
+                            expandedId === project.id ? null : project.id
+                          )
+                        }
                       >
                         <ArrowRight
-                          className={`h-4 w-4 transition-transform duration-300 ${expandedId === project.id ? "rotate-90" : ""}`}
+                          className={`h-4 w-4 transition-transform duration-300 ${
+                            expandedId === project.id ? "rotate-90" : ""
+                          }`}
                         />
                       </Button>
                     </motion.div>
@@ -182,11 +218,14 @@ export default function Projects() {
                       initial={{ height: "80px", overflow: "hidden" }}
                       animate={{
                         height: expandedId === project.id ? "auto" : "80px",
-                        overflow: expandedId === project.id ? "visible" : "hidden",
+                        overflow:
+                          expandedId === project.id ? "visible" : "hidden",
                       }}
                       transition={{ duration: 0.3 }}
                     >
-                      <p className="text-muted-foreground line-clamp-3">{project.description}</p>
+                      <p className="text-muted-foreground line-clamp-3">
+                        {project.description}
+                      </p>
                     </motion.div>
                   </CardHeader>
 
@@ -248,15 +287,24 @@ export default function Projects() {
         </AnimatePresence>
 
         {filteredProjects.length === 0 && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
-            <p className="text-muted-foreground">No projects found with the selected filter.</p>
-            <Button variant="outline" className="mt-4" onClick={() => setFilter(null)}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-20"
+          >
+            <p className="text-muted-foreground">
+              No projects found with the selected filter.
+            </p>
+            <Button
+              variant="outline"
+              className="mt-4"
+              onClick={() => setFilter(null)}
+            >
               Clear filter
             </Button>
           </motion.div>
         )}
       </div>
     </section>
-  )
+  );
 }
-

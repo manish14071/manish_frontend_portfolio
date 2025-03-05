@@ -2,17 +2,18 @@
 
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { insertMessageSchema } from "@shared/schema"
+
 import { useMutation } from "@tanstack/react-query"
-import { apiRequest } from "@/lib/queryClient"
-import { useToast } from "@/hooks/use-toast"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
+import { apiRequest } from "@/lib/queryClient.js"
+import { useToast } from "@/hooks/use-toast.js"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form.jsx"
+import { Input } from "@/components/ui/input.jsx"
+import { Textarea } from "@/components/ui/textarea.jsx"
+import { Button } from "@/components/ui/button.jsx"
 import { motion, AnimatePresence } from "framer-motion"
 import { Send, CheckCircle, Loader2 } from "lucide-react"
 import { useState } from "react"
+import { insertMessageSchema } from "@shared/schema.js"
 
 export default function Contact() {
   const { toast } = useToast()

@@ -1,8 +1,8 @@
-import Hero from "@/components/sections/Hero";
-import Projects from "@/components/sections/Projects";
-import Skills from "@/components/sections/Skills";
-import Experience from "@/components/sections/Experience";
-import Contact from "@/components/sections/Contact";
+import Hero from "@/components/sections/Hero.jsx";
+import Projects from "@/components/sections/Projects.jsx";
+import Skills from "@/components/sections/Skills.jsx";
+import Experience from "@/components/sections/Experience.jsx";
+import Contact from "@/components/sections/Contact.jsx";
 import { motion } from "framer-motion";
 
 export default function Home() {
